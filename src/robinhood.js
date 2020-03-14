@@ -625,6 +625,16 @@ function RobinhoodWebApi(opts, callback) {
       callback
     );
   };
+  
+  api.getDefaultWatchlist = function (callback) {
+    return _request.get(
+      {
+        uri: _apiUrl + _endpoints.watchlists + 'Default'
+      },
+      callback
+    );
+  };
+
 
   api.splits = function (instrument, callback) {
     return _request.get(
