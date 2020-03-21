@@ -83,6 +83,7 @@ function RobinhoodWebApi(opts, callback) {
     _private.password = _.has(_options, 'password') ? _options.password : null;
     _private.auth_token = _.has(_options, 'token') ? _options.token : null;
     _private.device_token = _.has(_options, 'device_token') ? _options.device_token : null;
+    _private.bearer = _.has(_options, 'bearer') ? _options.bearer : null;
     _private.headers = {
       Host: 'api.robinhood.com',
       Accept: '*/*',
@@ -90,7 +91,12 @@ function RobinhoodWebApi(opts, callback) {
       'X-Robinhood-API-Version': '1.265.0',
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
       Referer: 'https://robinhood.com/',
-      Origin: 'https://robinhood.com'
+      Origin: 'https://robinhood.com',
+      'x-midlands-api-version': '1.66.64',
+      Authorization: _private.bearer,
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-site'
     };
     _setHeaders();
     if (!_private.auth_token) {
